@@ -4,7 +4,7 @@ Criação de modelo preditivo para diabetes e envio para verificação de peform
 no servidor.
 @author: Aydano Machado <aydano.machado@gmail.com>
 """
-
+from sklearn.impute import SimpleImputer
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
 import requests
@@ -16,11 +16,10 @@ data = pd.read_csv('diabetes_dataset.csv')
 print(' - Criando X e y para o algoritmo de aprendizagem a partir do arquivo diabetes_dataset')
 
 # Remove all rows that have missing data (initial test, just to see the model behavior)
-data_records_dropped = data.dropna(axis=0, how='any')
 feature_cols = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 
                 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
-X = data_records_dropped[feature_cols]
-y = data_records_dropped.Outcome
+X = data[feature_cols]
+y = data.Outcome
 
 # Ciando o modelo preditivo para a base trabalhada
 print(' - Criando modelo preditivo')
