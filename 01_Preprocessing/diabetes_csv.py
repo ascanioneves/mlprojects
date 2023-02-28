@@ -14,7 +14,8 @@ data = pd.read_csv('diabetes_dataset.csv')
 
 # Criando X and y par ao algorítmo de aprendizagem de máquina.\
 print(' - Criando X e y para o algoritmo de aprendizagem a partir do arquivo diabetes_dataset')
-# Caso queira modificar as colunas consideradas basta algera o array a seguir.
+
+# Remove all rows that have missing data (initial test, just to see the model behavior)
 data_records_dropped = data.dropna(axis=0, how='any')
 feature_cols = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 
                 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
