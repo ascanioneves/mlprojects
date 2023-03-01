@@ -21,23 +21,36 @@ print(' - Criando X e y para o algoritmo de aprendizagem a partir do arquivo dia
 # Remove all rows that have missing data (initial test, just to see the model behavior)
 feature_cols = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 
                 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
-data_dropped = data.dropna(axis=0, how='any')
-X = data_dropped[feature_cols]
-y = data_dropped.Outcome
-print(y)
+#data_dropped = data.dropna(axis=0, how='any')
+X = data[feature_cols]
+y = data.Outcome
+#print(y)
 
+#Splitting dataset into train and test
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
 
+#Combining X_test and y_test with the purpose of dropping test set missing data
+combined = pd.concat([X_test, y_test], axis=1)
 
-# Ciando o modelo preditivo para a base tr      abalhada
+#Dropping missing values of test set
+dropped_test = combined.dropna(axis=0, how='any')
+X_test = dropped_test[feature_cols]
+y_test = dropped_test.Outcome
+# Ciando o modelo preditivo para a base trabalhada
 print(' - Criando modelo preditivo')
+
+#Combining X_train and y_train with the pyrpose of dropping train set missing data
+combined = pd.concat([X_train, y_train], axis=1)
+dropped_train = combined.dropna(axis=0, how='any')
+X_train = dropped_train[feature_cols]
+y_train = dropped_train.Outcome
 neigh = KNeighborsClassifier(n_neighbors=3)
 neigh.fit(X_train, y_train)
 
 #realizando previsões com o arquivo de
 y_pred = neigh.predict(X_test)
 
-print(accuracy_score(y_test, y_pred))
+print(f'Accuracy: {accuracy_score(y_test, y_pred)}')
 
 # Enviando previsões realizadas com o modelo para o servidor
 #URL = "https://aydanomachado.com/mlclass/01_Preprocessing.php"
