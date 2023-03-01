@@ -18,9 +18,15 @@ print(' - Criando X e y para o algoritmo de aprendizagem a partir do arquivo dia
 # Remove all rows that have missing data (initial test, just to see the model behavior)
 feature_cols = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 
                 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
-X = data[feature_cols]
-y = data.Outcome
+#X = data[feature_cols]
+#y = data.Outcome
 
+imputer = SimpleImputer(strategy='mean')
+imputer.fit(data)
+imputed_data = imputer.transform(data)
+df = pd.DataFrame(imputed_data, columns=data.columns)
+X = df[feature_cols]
+y = df.Outcome
 # Ciando o modelo preditivo para a base trabalhada
 print(' - Criando modelo preditivo')
 neigh = KNeighborsClassifier(n_neighbors=3)
