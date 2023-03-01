@@ -1,1 +1,2 @@
-Accuracy: 0.7083333333333334 (dropping missing values)
+0.6048754855124351 (using dropna strategy)
+0.6865971027749604 (using mean strategy)
