@@ -1,2 +1,9 @@
 0.6048754855124351 (using dropna strategy)
 0.6865971027749604 (using mean strategy)
+0.6657764475653275 (using most_frequent strategy)
+0.6630315523538122 (using median strategy)
+
+0.7523800625577849 (using median strategy)
+0.7072415773579277 (using median strategy)
+0.6676457143364355 (using median strategy)
+0.7151785753205375 (using median strategy)
