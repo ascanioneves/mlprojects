@@ -15,14 +15,14 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 print('\n - Lendo o arquivo com o dataset sobre diabetes')
 data = pd.read_csv('diabetes_dataset.csv')
 
-#data = data.drop('Pregnancies', axis=1) # -> Drop pregnancies from dataset
+data = data.drop('Pregnancies', axis=1) # -> Drop pregnancies from dataset
 data = data.drop('SkinThickness', axis=1) # -> Drop SkinThickness
 #data = data.drop('Insulin')
 # Criando X and y par ao algorítmo de aprendizagem de máquina.\
 print(' - Criando X e y para o algoritmo de aprendizagem a partir do arquivo diabetes_dataset')
 
 # Remove all rows that have missing data (initial test, just to see the model behavior)
-feature_cols = ['Pregnancies', 'Glucose', 'BloodPressure',  
+feature_cols = ['Glucose', 'BloodPressure',  
                 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
 #X = data[feature_cols]
 #y = data.Outcome
