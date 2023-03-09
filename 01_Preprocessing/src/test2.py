@@ -44,7 +44,7 @@ columns_to_normalize = X.columns
 
 scaler = MinMaxScaler()
 X[columns_to_normalize] = scaler.fit_transform(X[columns_to_normalize]) #normalize all columns
-
+print(X)
 #selector = SelectKBest(f_classif, k=7)
 #X_new = selector.fit_transform(X, y)
 #print(selector.get_support())

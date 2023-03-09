@@ -54,7 +54,6 @@ columns_to_normalize = X.columns
 
 scaler = MinMaxScaler()
 X[columns_to_normalize] = scaler.fit_transform(X[columns_to_normalize]) #normalize all columns
-
 #selector = SelectKBest(f_classif, k=7)
 #X_new = selector.fit_transform(X, y)
 
@@ -71,8 +70,6 @@ neigh.fit(X, y)
 print(' - Aplicando modelo e enviando para o servidor')
 data_app = pd.read_csv('diabetes_app.csv')
 data_app = data_app[feature_cols]
-#scaler = MinMaxScaler()
-#data_app[columns_to_normalize] = scaler.fit_transform(data_app[columns_to_normalize])
 y_pred = neigh.predict(data_app)
 
 # Enviando previsões realizadas com o modelo para o servidor
